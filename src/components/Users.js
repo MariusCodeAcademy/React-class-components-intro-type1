@@ -27,13 +27,18 @@ class Users extends Component {
     // propper state change depending on prvious state
     this.setState((curState) => {
       return { showUsers: !curState.showUsers };
+      // update multiple state values
+      // return {
+      //   showUsers: !curState.showUsers,
+      //   someMoreVar: curState.someMoreVar + 1,
+      // };
     });
   };
 
   render() {
     const usersList = (
       <ul>
-        {DUMMY_USERS.map((user) => (
+        {this.props.users.map((user) => (
           <User key={user.id} name={user.name} />
         ))}
       </ul>
@@ -49,32 +54,32 @@ class Users extends Component {
   }
 }
 
-const Users1 = () => {
-  const [showUsers, setShowUsers] = useState(true);
+// const Users1 = () => {
+//   const [showUsers, setShowUsers] = useState(true);
 
-  const toggleUsersHandler = () => {
-    // proper way to update state if it depends on previos state
-    setShowUsers((curState) => !curState);
-    // works not always
-    // setShowUsers(!showUsers);
-  };
+//   const toggleUsersHandler = () => {
+//     // proper way to update state if it depends on previos state
+//     setShowUsers((curState) => !curState);
+//     // works not always
+//     // setShowUsers(!showUsers);
+//   };
 
-  const usersList = (
-    <ul>
-      {DUMMY_USERS.map((user) => (
-        <User key={user.id} name={user.name} />
-      ))}
-    </ul>
-  );
+//   const usersList = (
+//     <ul>
+//       {DUMMY_USERS.map((user) => (
+//         <User key={user.id} name={user.name} />
+//       ))}
+//     </ul>
+//   );
 
-  return (
-    <div className={classes.users}>
-      <button onClick={toggleUsersHandler}>
-        {showUsers ? 'Hide' : 'Show'} Users
-      </button>
-      {showUsers && usersList}
-    </div>
-  );
-};
+//   return (
+//     <div className={classes.users}>
+//       <button onClick={toggleUsersHandler}>
+//         {showUsers ? 'Hide' : 'Show'} Users
+//       </button>
+//       {showUsers && usersList}
+//     </div>
+//   );
+// };
 
 export default Users;

@@ -69,6 +69,8 @@ function UserFinder1() {
   // componentDidMount = useEffect(() => {}, [])
   useEffect(() => {
     setFilteredUsers(DUMMY_USERS);
+    // componentWillUnmount()
+    return () => console.log('clenup');
   }, []);
 
   // componentDidUpdate - class based

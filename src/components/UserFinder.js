@@ -42,9 +42,14 @@ class UserFinder extends Component {
   render() {
     return (
       <>
-        {/* <UsersContext.Consumer> */}
         <div className={css.finder}>
-          <h1>MainColor: </h1>
+          <UsersContext.Consumer>
+            {(value) => (
+              <h1 style={{ color: value.mainColor }}>
+                MainColor: {value.mainColor}
+              </h1>
+            )}
+          </UsersContext.Consumer>
           <input
             type='search'
             value={this.state.searchTerm}
@@ -55,7 +60,6 @@ class UserFinder extends Component {
           )}
         </div>
         <Users users={this.state.filteredUsers} />
-        {/* </UsersContext.Consumer> */}
       </>
     );
   }

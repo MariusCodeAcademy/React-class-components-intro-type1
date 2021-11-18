@@ -36,12 +36,15 @@ class UserFinder extends Component {
   // mehods
   searchChangeHandler = (e) => {
     this.setState({ searchTerm: e.target.value });
+    this.context.test(e.target.value);
   };
 
   render() {
     return (
       <>
+        {/* <UsersContext.Consumer> */}
         <div className={css.finder}>
+          <h1>MainColor: </h1>
           <input
             type='search'
             value={this.state.searchTerm}
@@ -52,6 +55,7 @@ class UserFinder extends Component {
           )}
         </div>
         <Users users={this.state.filteredUsers} />
+        {/* </UsersContext.Consumer> */}
       </>
     );
   }

@@ -11,7 +11,14 @@ const DUMMY_USERS = [
 function App() {
   const usersContext = {
     users: DUMMY_USERS,
+    test: test,
+    mainColor: 'Tomato',
   };
+
+  function test(val) {
+    console.log('test app.js', val);
+  }
+
   return (
     <UsersContext.Provider value={usersContext}>
       <UserFinder />

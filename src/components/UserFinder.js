@@ -12,9 +12,27 @@ class UserFinder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filteredUsers: DUMMY_USERS,
+      filteredUsers: [],
       searchTerm: '',
     };
+    console.log('constructor');
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount');
+    this.setState({ filteredUsers: DUMMY_USERS });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
+    // if searchTerm changed i will update
+    if (prevState.searchTerm !== this.state.searchTerm) {
+      const filteredArr = DUMMY_USERS.filter((userObj) =>
+        userObj.name.includes(this.state.searchTerm)
+      );
+      this.setState({ filteredUsers: filteredArr });
+    }
+    // infinite loop
   }
 
   // mehods
@@ -30,6 +48,9 @@ class UserFinder extends Component {
             value={this.state.searchTerm}
             onChange={this.searchChangeHandler}
           />
+          {this.state.searchTerm && (
+            <h3>You have searched for: "{this.state.searchTerm}"</h3>
+          )}
         </div>
         <Users users={this.state.filteredUsers} />
       </>
@@ -50,7 +71,7 @@ function UserFinder1() {
     setFilteredUsers(DUMMY_USERS);
   }, []);
 
-  // componentWillUpdate - class based
+  // componentDidUpdate - class based
   useEffect(() => {
     console.log('searchTerm updated', searchTerm);
     const filteredArr = DUMMY_USERS.filter((userObj) =>

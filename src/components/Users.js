@@ -13,7 +13,10 @@ const Users = () => {
   const [showUsers, setShowUsers] = useState(true);
 
   const toggleUsersHandler = () => {
+    // proper way to update state if it depends on previos state
     setShowUsers((curState) => !curState);
+    // works not always
+    // setShowUsers(!showUsers);
   };
 
   const usersList = (

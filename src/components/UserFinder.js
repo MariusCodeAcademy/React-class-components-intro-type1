@@ -1,5 +1,5 @@
 import css from './UserFinder.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Component } from 'react';
 import Users from './Users';
 
 const DUMMY_USERS = [
@@ -8,7 +8,37 @@ const DUMMY_USERS = [
   { id: 'u3', name: 'Jane' },
 ];
 
-function UserFinder() {
+class UserFinder extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filteredUsers: DUMMY_USERS,
+      searchTerm: '',
+    };
+  }
+
+  // mehods
+  searchChangeHandler = (e) => {
+    this.setState({ searchTerm: e.target.value });
+  };
+  render() {
+    return (
+      <>
+        <div className={css.finder}>
+          <input
+            type='search'
+            value={this.state.searchTerm}
+            onChange={this.searchChangeHandler}
+          />
+        </div>
+        <Users users={this.state.filteredUsers} />
+      </>
+    );
+  }
+}
+// CLASS END
+
+function UserFinder1() {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 

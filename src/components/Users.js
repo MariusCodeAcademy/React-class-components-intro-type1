@@ -22,7 +22,12 @@ class Users extends Component {
   toggleUsersHandler = () => {
     // this merges with this.state and does not ovewrite
     // console.log(this);
-    this.setState({ showUsers: false });
+    // works in most cases
+    // this.setState({ showUsers: !this.state.showUsers });
+    // propper state change depending on prvious state
+    this.setState((curState) => {
+      return { showUsers: !curState.showUsers };
+    });
   };
 
   render() {

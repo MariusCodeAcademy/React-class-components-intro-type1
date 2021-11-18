@@ -19,10 +19,11 @@ class Users extends Component {
     };
   }
   // method
-  toggleUsersHandler() {
+  toggleUsersHandler = () => {
     // this merges with this.state and does not ovewrite
+    // console.log(this);
     this.setState({ showUsers: false });
-  }
+  };
 
   render() {
     const usersList = (
@@ -34,7 +35,7 @@ class Users extends Component {
     );
     return (
       <div className={classes.users}>
-        <button onClick={this.toggleUsersHandler.bind(this)}>
+        <button onClick={this.toggleUsersHandler}>
           {this.state.showUsers ? 'Hide' : 'Show'} Users
         </button>
         {this.state.showUsers && usersList}

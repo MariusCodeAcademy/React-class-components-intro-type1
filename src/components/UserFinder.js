@@ -9,12 +9,16 @@ const DUMMY_USERS = [
 ];
 
 function UserFinder() {
-  const [filteredUsers, setFilteredUsers] = useState(DUMMY_USERS);
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   const searchChangeHandler = (e) => {
     setSearchTerm(e.target.value);
   };
+  // componentDidMount = useEffect(() => {}, [])
+  useEffect(() => {
+    setFilteredUsers(DUMMY_USERS);
+  }, []);
 
   // componentWillUpdate - class based
   useEffect(() => {

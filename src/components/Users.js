@@ -3,12 +3,6 @@ import User from './User';
 
 import classes from './Users.module.css';
 
-const DUMMY_USERS = [
-  { id: 'u1', name: 'James' },
-  { id: 'u2', name: 'Mike' },
-  { id: 'u3', name: 'Jane' },
-];
-
 class Users extends Component {
   constructor(props) {
     super(props);
